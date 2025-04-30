@@ -7,27 +7,25 @@ import random
 # Create main window
 root = Tk()
 root.title("COVID-19 Risk Prediction Application")
-root.geometry("550x750")
 
+root.geometry("550x750")
 root.minsize(600,650)
 root.maxsize(800,800)
 
 root.configure(bg="#f0f4f7")
 
-# Styles
+
 style = ttk.Style()
 style.configure("TLabel", font=("Helvetica", 11))
 style.configure("TButton", font=("Helvetica", 12), padding=6)
 style.configure("TCombobox", font=("Helvetica", 11))
 
-# Container Frame
+
 main_frame = ttk.Frame(root, padding="20 20 20 20")
 main_frame.pack(fill="both", expand=True)
-
-# Store all input variables
 inputs = {}
 
-# Function to handle dynamic behavior
+
 def update_fields(*args):
     # Patient Type Logic
     if inputs["Patient Type"].get() == "Not Hospitalized":
@@ -43,7 +41,6 @@ def update_fields(*args):
         if inputs["ICU"].get() == "Does not apply":
             inputs["ICU"].set("No")
 
-    # Sex Logic
     if inputs["Sex"].get() == "Male":
         inputs["Pregnancy"].set("Does not apply")
         pregnancy_combo.config(state="disabled")
@@ -52,12 +49,12 @@ def update_fields(*args):
         if inputs["Pregnancy"].get() == "Does not apply":
             inputs["Pregnancy"].set("No")
 
-# Prediction Function
+
 def predict():
     chance = random.randint(1, 70)
     messagebox.showinfo("Prediction Result", f"{chance}% chance of you being COVID Positive (+ve)")
 
-# Helper to create labeled dropdowns
+
 def create_labeled_dropdown(parent, label_text, options, default, row):
     ttk.Label(parent, text=label_text).grid(row=row, column=0, sticky='w', padx=5, pady=5)
     var = tk.StringVar(value=default)
@@ -72,7 +69,8 @@ age_var = tk.StringVar()
 ttk.Entry(main_frame, textvariable=age_var, width=27).grid(row=0, column=1, sticky='w', padx=5, pady=5)
 inputs["Age"] = age_var
 
-# Dropdown fields with default values
+
+
 dropdowns = [
     ("Sex", ["Male", "Female"], "Female"),
     ("Patient Type", ["Hospitalized", "Not Hospitalized"], "Not Hospitalized"),
@@ -93,27 +91,23 @@ dropdowns = [
     ("ICU", ["Yes", "No", "Does not apply"], "No"),
 ]
 
-# Place dropdowns
+
 combos = {}
 for i, (label, options, default) in enumerate(dropdowns):
     print (f"{label},{options},{default},{i}")
     combo = create_labeled_dropdown(main_frame, label, options, default, i)
     combos[label] = combo
 
-# Specific field references for logic
+
 intubed_combo = combos["Intubed"]
 icu_combo = combos["ICU"]
 pregnancy_combo = combos["Pregnancy"]
 
-# Tracing logic
+
 inputs["Sex"].trace_add("write", update_fields)
 inputs["Patient Type"].trace_add("write", update_fields)
 
-# Prediction Button
+
 ttk.Button(main_frame, text="Predict", command=predict).grid(row=len(dropdowns) + 2, column=0, columnspan=2, pady=20,)
-
-# Apply initial logic
 update_fields()
-
-# Run application
 root.mainloop()
