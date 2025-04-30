@@ -19,7 +19,7 @@ This app is a Tkinter-based GUI :
 
 ### Clone the repository
 ```bash
-https://github.com/codewthR/
+https://github.com/codewthR/Costa-Cloud-Asg.git
 cd Covid19_predict.py
 ```
 
