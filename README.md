@@ -1,6 +1,6 @@
 # 🦠 COVID-19 Risk Prediction GUI App
 
-## 🖼️ [Sample Pictures](#project-sample-pictures)
+## 🖼️ [Project Sample Pictures](#project-sample-pictures)
 
 ## Main Objective
 This app is a Tkinter-based GUI :
