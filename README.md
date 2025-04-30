@@ -37,16 +37,20 @@ cd Covid19_predict.py
 ## Project Sample Pictures 
 # Img 1
 
-![Screenshot 2025-04-30 193729](https://github.com/user-attachments/assets/ca254af8-bca8-4ed0-a16a-8fe6060c8771)
+![Screenshot 2025-04-30 235049](https://github.com/user-attachments/assets/3b0e1b89-5d53-4b25-82ab-b2e2fdd932f9)
+
 # Img 2
 
-![Screenshot 2025-04-30 193424](https://github.com/user-attachments/assets/c7dc69d0-0695-4349-9048-eb6ab6aa9207)
+![Screenshot 2025-04-30 235119](https://github.com/user-attachments/assets/a21c98da-7e32-4347-8bcb-33608e863547)
+
 # Img 3
 
-![Screenshot 2025-04-30 193505](https://github.com/user-attachments/assets/8c4d3f03-fc9c-4b2d-b054-a3a6085d6946)
+![Screenshot 2025-04-30 235308](https://github.com/user-attachments/assets/a8de4a70-3118-4397-b773-0f57df141d33)
+
 # Img 4
 
-![Screenshot 2025-04-30 193550](https://github.com/user-attachments/assets/3bbd7491-0f2a-480f-9356-bf3362051b1d)
+![Screenshot 2025-04-30 235241](https://github.com/user-attachments/assets/9b8eb6c4-d082-4b5b-8e05-30b90ce0cced)
+
 
 
 
