@@ -1,16 +1,16 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk, messagebox
-
 import random
 
+
 root = Tk()
-root.title("COVID-19 Risk Prediction Application")
+root.title("COVID-19 Risk Prediction")
+root.geometry("550x700")
 
-root.geometry("550x750")
-root.minsize(600,650)
-root.maxsize(800,800)
 
+root.minsize(500,600)
+root.maxsize(600,700)
 # root.configure(bg="#f0f4f7")
 
 
@@ -22,7 +22,9 @@ style.configure("TCombobox", font=("Helvetica", 11))
 
 main_frame = ttk.Frame(root, padding="20 20 20 20")
 main_frame.pack(fill="both", expand=True)
-inputs = {}
+
+
+inputs = {}   
 
 
 def update_fields(*args):
@@ -40,6 +42,7 @@ def update_fields(*args):
         if inputs["ICU"].get() == "Does not apply":
             inputs["ICU"].set("No")
 
+  
     if inputs["Sex"].get() == "Male":
         inputs["Pregnancy"].set("Does not apply")
         pregnancy_combo.config(state="disabled")
@@ -50,7 +53,7 @@ def update_fields(*args):
 
 
 def predict():
-    chance = random.randint(1, 70)
+    chance = random.randint(1, 100)
     messagebox.showinfo("Prediction Result", f"{chance}% chance of you being COVID Positive (+ve)")
 
 
@@ -63,11 +66,12 @@ def create_labeled_dropdown(parent, label_text, options, default, row):
     return combo
 
 
-ttk.Label(main_frame, text="Age").grid(sticky='w', padx=5, pady=5)
-age_var = tk.StringVar()
-ttk.Entry(main_frame, textvariable=age_var, width=25).grid(column=1, sticky='w', padx=5, pady=5)
-inputs["Age"] = age_var
+# tk.Label(root, text="Name:").grid(row=0, column=0, padx=10, pady=5, sticky='w')
 
+ttk.Label(main_frame, text="Age").grid(row=0, column=0, sticky='w', padx=5, pady=5)
+age_var = tk.StringVar()
+ttk.Entry(main_frame, textvariable=age_var, width=27).grid(row=0, column=1, sticky='w', padx=5, pady=5)
+inputs["Age"] = age_var
 
 
 dropdowns = [
@@ -93,9 +97,9 @@ dropdowns = [
 
 combos = {}
 for i, (label, options, default) in enumerate(dropdowns):
-    
-    # print (f"{label},{options},{default},{i}")
-    combo = create_labeled_dropdown(main_frame, label, options, default, i)
+
+    # print(f"{i}, {label}, {options}, {default}")
+    combo = create_labeled_dropdown(main_frame, label, options, default, int(i)+1)
     combos[label] = combo
 
 
@@ -108,6 +112,6 @@ inputs["Sex"].trace_add("write", update_fields)
 inputs["Patient Type"].trace_add("write", update_fields)
 
 
-ttk.Button(main_frame, text="Predict", command=predict).grid(row=len(dropdowns) + 2, column=0, columnspan=2, pady=20,)
+ttk.Button(main_frame, text="Predict", command=predict).grid(row=len(dropdowns) + 2, column=0, columnspan=2, pady=20)
 update_fields()
 root.mainloop()
