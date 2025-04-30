@@ -4,7 +4,6 @@ from tkinter import ttk, messagebox
 
 import random
 
-# Create main window
 root = Tk()
 root.title("COVID-19 Risk Prediction Application")
 
@@ -12,12 +11,12 @@ root.geometry("550x750")
 root.minsize(600,650)
 root.maxsize(800,800)
 
-root.configure(bg="#f0f4f7")
+# root.configure(bg="#f0f4f7")
 
 
 style = ttk.Style()
 style.configure("TLabel", font=("Helvetica", 11))
-style.configure("TButton", font=("Helvetica", 12), padding=6)
+style.configure("TButton", font=("Helvetica", 20), padding=6)
 style.configure("TCombobox", font=("Helvetica", 11))
 
 
@@ -63,10 +62,10 @@ def create_labeled_dropdown(parent, label_text, options, default, row):
     inputs[label_text] = var
     return combo
 
-# Age Field
-ttk.Label(main_frame, text="Age").grid(row=0, column=0, sticky='w', padx=5, pady=5)
+
+ttk.Label(main_frame, text="Age").grid(sticky='w', padx=5, pady=5)
 age_var = tk.StringVar()
-ttk.Entry(main_frame, textvariable=age_var, width=27).grid(row=0, column=1, sticky='w', padx=5, pady=5)
+ttk.Entry(main_frame, textvariable=age_var, width=25).grid(column=1, sticky='w', padx=5, pady=5)
 inputs["Age"] = age_var
 
 
@@ -94,7 +93,8 @@ dropdowns = [
 
 combos = {}
 for i, (label, options, default) in enumerate(dropdowns):
-    print (f"{label},{options},{default},{i}")
+    
+    # print (f"{label},{options},{default},{i}")
     combo = create_labeled_dropdown(main_frame, label, options, default, i)
     combos[label] = combo
 
